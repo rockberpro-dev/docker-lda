@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Files now install to `~/.config/docker-lda/` (or `$XDG_CONFIG_HOME/docker-lda/`) instead of directly in `~/`. Re-running the setup script migrates an older install: it removes `~/.docker-lda.sh`, `~/.docker-lda-help.sh` (`.ps1` on Windows) and the old source line in `~/.bashrc`/`$PROFILE`
 - **Breaking:** Compose aliases now use the `dc` prefix instead of `dcp` (e.g. `dcpu` → `dcu`, `dcpd` → `dcd`, `dcps` → `dcs`). The bare `dc` alias shadows the system `dc` calculator in interactive shells.
 
 ## [0.1.0] - 2026-04-16

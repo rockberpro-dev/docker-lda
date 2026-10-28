@@ -67,31 +67,35 @@ iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.ps1
 
 Then reload your shell (`source ~/.bashrc` on Bash, `. $PROFILE` on PowerShell).
 
-The setup scripts add a single source line to your shell profile and copy two files to `~/`. You can read the full source ([setup.sh](setup.sh), [setup.ps1](setup.ps1)) before running, or use the manual install below.
+The setup scripts add a single source line to your shell profile and copy two files to `~/.config/docker-lda/` (or `$XDG_CONFIG_HOME/docker-lda/`). Re-running them upgrades an older install that put the files directly in `~/`: the old files and source line are removed. You can read the full source ([setup.sh](setup.sh), [setup.ps1](setup.ps1)) before running, or use the manual install below.
 
 **Manual install (Bash):**
 
 ```bash
+mkdir -p ~/.config/docker-lda
+
 curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.sh \
-  -o ~/.docker-lda.sh
+  -o ~/.config/docker-lda/docker-lda.sh
 
 curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.sh \
-  -o ~/.docker-lda-help.sh && chmod +x ~/.docker-lda-help.sh
+  -o ~/.config/docker-lda/docker-lda-help.sh && chmod +x ~/.config/docker-lda/docker-lda-help.sh
 
-echo 'source ~/.docker-lda.sh' >> ~/.bashrc
+echo 'source ~/.config/docker-lda/docker-lda.sh' >> ~/.bashrc
 source ~/.bashrc
 ```
 
 **Manual install (PowerShell):**
 
 ```powershell
+New-Item -ItemType Directory -Path "$HOME\.config\docker-lda" -Force | Out-Null
+
 iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.ps1 `
-  -OutFile "$HOME\.docker-lda.ps1"
+  -OutFile "$HOME\.config\docker-lda\docker-lda.ps1"
 
 iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.ps1 `
-  -OutFile "$HOME\.docker-lda-help.ps1"
+  -OutFile "$HOME\.config\docker-lda\docker-lda-help.ps1"
 
-Add-Content -Path $PROFILE -Value "`n. `"$HOME\.docker-lda.ps1`""
+Add-Content -Path $PROFILE -Value "`n. `"$HOME\.config\docker-lda\docker-lda.ps1`""
 . $PROFILE
 ```
 
@@ -138,16 +142,16 @@ Add-Content -Path $PROFILE -Value "`n. `"$HOME\.docker-lda.ps1`""
 **Bash:**
 
 ```bash
-sed -i '/source ~\/.docker-lda.sh/d' ~/.bashrc
-rm ~/.docker-lda.sh ~/.docker-lda-help.sh
+sed -i '/\/docker-lda\/docker-lda\.sh/d' ~/.bashrc
+rm -r ~/.config/docker-lda
 ```
 
 **PowerShell:**
 
 ```powershell
-$content = Get-Content $PROFILE | Where-Object { $_ -notlike '*\.docker-lda.ps1*' }
+$content = Get-Content $PROFILE | Where-Object { $_ -notlike '*\docker-lda\docker-lda.ps1*' }
 Set-Content $PROFILE $content
-Remove-Item "$HOME\.docker-lda.ps1", "$HOME\.docker-lda-help.ps1"
+Remove-Item "$HOME\.config\docker-lda" -Recurse
 ```
 
 ---
