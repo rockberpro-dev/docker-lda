@@ -1,13 +1,21 @@
 #Requires -Version 5.1
 
-$aliasesUrl  = "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.ps1"
-$installPath = "$HOME\.docker-lda.ps1"
+$configHome  = if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { "$HOME\.config" }
+$configDir   = "$configHome\docker-lda"
+$installPath = "$configDir\docker-lda.ps1"
+$helpPath    = "$configDir\docker-lda-help.ps1"
 
-$helpUrl  = "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.ps1"
-$helpPath = "$HOME\.docker-lda-help.ps1"
+# Remove files from older versions, which installed directly into ~
+Remove-Item "$HOME\.docker-lda.ps1", "$HOME\.docker-lda-help.ps1" -Force -ErrorAction SilentlyContinue
+if ((Test-Path $PROFILE) -and (Select-String -Path $PROFILE -SimpleMatch '\.docker-lda.ps1' -Quiet)) {
+    $profileLines = @(Get-Content $PROFILE | Where-Object { -not $_.Contains('\.docker-lda.ps1') })
+    Set-Content -Path $PROFILE -Value $profileLines
+}
 
-Invoke-WebRequest -Uri $aliasesUrl -UseBasicParsing -OutFile $installPath
-Invoke-WebRequest -Uri $helpUrl    -UseBasicParsing -OutFile $helpPath
+New-Item -ItemType Directory -Path $configDir -Force | Out-Null
+
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.ps1" -UseBasicParsing -OutFile $installPath
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.ps1" -UseBasicParsing -OutFile $helpPath
 
 $profileDir = Split-Path $PROFILE
 if (-not (Test-Path $profileDir)) {

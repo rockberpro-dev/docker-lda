@@ -6,7 +6,7 @@
 #   iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.ps1 | iex
 #
 # Manual install:
-#   Add `. "$HOME\.docker-lda.ps1"` to your $PROFILE
+#   Add `. "$HOME\.config\docker-lda\docker-lda.ps1"` to your $PROFILE
 # ==============================================================================
 
 # --- PULL / RUN ---
@@ -58,4 +58,4 @@ function dsy   { docker system @args }
 function dsypr { docker system prune @args }
 
 # --- HELP ---
-function lda { & "$HOME\.docker-lda-help.ps1" }
+function lda { & "$(if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { "$HOME\.config" })\docker-lda\docker-lda-help.ps1" }

@@ -2,22 +2,31 @@
 
 set -e
 
-ALIASES_URL="https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.sh"
-INSTALL_PATH="$HOME/.docker-lda.sh"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/docker-lda"
 
-HELP_URL="https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.sh"
-HELP_PATH="$HOME/.docker-lda-help.sh"
-
-curl -sL "$ALIASES_URL" -o "$INSTALL_PATH"
+INSTALL_PATH="$CONFIG_DIR/docker-lda.sh"
+HELP_PATH="$CONFIG_DIR/docker-lda-help.sh"
 
 BASHRC="${BASHRC:-$HOME/.bashrc}"
 
-if ! grep -qF "source $INSTALL_PATH" "$BASHRC" 2>/dev/null; then
-    echo "" >> "$BASHRC"
-    echo "source $INSTALL_PATH" >> "$BASHRC"
+# Remove files from older versions, which installed directly into ~
+rm -f "$HOME/.docker-lda.sh" "$HOME/.docker-lda-help.sh"
+if [ -f "$BASHRC" ] && grep -qF '/.docker-lda.sh' "$BASHRC"; then
+    grep -vF '/.docker-lda.sh' "$BASHRC" > "$BASHRC.docker-lda.tmp" || true
+    cat "$BASHRC.docker-lda.tmp" > "$BASHRC"
+    rm -f "$BASHRC.docker-lda.tmp"
 fi
 
-curl -sL "$HELP_URL" -o "$HELP_PATH"
+mkdir -p "$CONFIG_DIR"
+
+curl -sL "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.sh" -o "$INSTALL_PATH"
+
+if ! grep -qF "source \"$INSTALL_PATH\"" "$BASHRC" 2>/dev/null; then
+    echo "" >> "$BASHRC"
+    echo "source \"$INSTALL_PATH\"" >> "$BASHRC"
+fi
+
+curl -sL "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.sh" -o "$HELP_PATH"
 chmod +x "$HELP_PATH"
 
 echo "docker-lda installed: $INSTALL_PATH"

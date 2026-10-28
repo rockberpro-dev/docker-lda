@@ -88,7 +88,7 @@ hbar() {
 # =========================
 # Read Aliases from file
 # =========================
-LBA_FILE="${DOCKER_LDA_FILE:-$HOME/.docker-lda.sh}"
+LBA_FILE="${DOCKER_LDA_FILE:-$(dirname "${BASH_SOURCE[0]}")/docker-lda.sh}"
 
 if [[ ! -f "$LBA_FILE" ]]; then
   echo "Error: $LBA_FILE not found." >&2

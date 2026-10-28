@@ -6,7 +6,7 @@
 #   curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.sh | bash
 #
 # Manual install:
-#   echo 'source ~/.docker-lda.sh' >> ~/.bashrc && source ~/.bashrc
+#   echo 'source ~/.config/docker-lda/docker-lda.sh' >> ~/.bashrc && source ~/.bashrc
 # ==============================================================================
 
 # --- PULL / RUN ---
@@ -58,4 +58,4 @@ alias dsy='docker system'
 alias dsypr='docker system prune'
 
 # --- HELP ---
-alias lda='~/.docker-lda-help.sh'
+alias lda='"${XDG_CONFIG_HOME:-$HOME/.config}/docker-lda/docker-lda-help.sh"'

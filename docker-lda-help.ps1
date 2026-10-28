@@ -3,7 +3,7 @@
 # https://github.com/rockberpro/docker-lda
 # ==============================================================================
 
-$ldaFile = if ($env:DOCKER_LDA_FILE) { $env:DOCKER_LDA_FILE } else { "$HOME\.docker-lda.ps1" }
+$ldaFile = if ($env:DOCKER_LDA_FILE) { $env:DOCKER_LDA_FILE } else { "$PSScriptRoot\docker-lda.ps1" }
 
 if (-not (Test-Path $ldaFile)) {
     Write-Error "Error: $ldaFile not found."
