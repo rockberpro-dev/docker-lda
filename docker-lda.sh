@@ -11,6 +11,8 @@
 
 # --- PULL / RUN ---
 alias dpl='docker pull'
+alias dpu='docker push'
+alias dbl='docker build'
 alias drn='docker run'
 alias drni='docker run -it'
 
@@ -18,6 +20,7 @@ alias drni='docker run -it'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias drm='docker rm'
+alias drmf='docker rm -f'
 alias dex='docker exec'
 alias dexi='docker exec -it'
 
@@ -30,11 +33,19 @@ alias dim='docker image'
 alias dils='docker image ls'
 alias dirm='docker image rm'
 alias dipr='docker image prune'
+alias dtg='docker tag'
 
 # --- VOLUME ---
 alias dv='docker volume'
 alias dvls='docker volume ls'
 alias dvrm='docker volume rm'
+alias dvpr='docker volume prune'
+
+# --- NETWORK ---
+alias dn='docker network'
+alias dnls='docker network ls'
+alias dnrm='docker network rm'
+alias dnpr='docker network prune'
 
 # --- COMPOSE ---
 alias dc='docker compose'
@@ -46,6 +57,9 @@ alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
 alias dcr='docker compose restart'
 alias dcs='docker compose stop'
+alias dce='docker compose exec'
+alias dcps='docker compose ps'
+alias dcpl='docker compose pull'
 
 # --- MANAGEMENT ---
 alias dst='docker start'

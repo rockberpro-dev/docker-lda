@@ -11,6 +11,8 @@
 
 # --- PULL / RUN ---
 function dpl  { docker pull @args }
+function dpu  { docker push @args }
+function dbl  { docker build @args }
 function drn  { docker run @args }
 function drni { docker run -it @args }
 
@@ -18,6 +20,7 @@ function drni { docker run -it @args }
 function dps  { docker ps @args }
 function dpsa { docker ps -a @args }
 function drm  { docker rm @args }
+function drmf { docker rm -f @args }
 function dex  { docker exec @args }
 function dexi { docker exec -it @args }
 
@@ -30,11 +33,19 @@ function dim  { docker image @args }
 function dils { docker image ls @args }
 function dirm { docker image rm @args }
 function dipr { docker image prune @args }
+function dtg  { docker tag @args }
 
 # --- VOLUME ---
 function dv   { docker volume @args }
 function dvls { docker volume ls @args }
 function dvrm { docker volume rm @args }
+function dvpr { docker volume prune @args }
+
+# --- NETWORK ---
+function dn   { docker network @args }
+function dnls { docker network ls @args }
+function dnrm { docker network rm @args }
+function dnpr { docker network prune @args }
 
 # --- COMPOSE ---
 function dc   { docker compose @args }
@@ -46,6 +57,9 @@ function dcl  { docker compose logs @args }
 function dclf { docker compose logs -f @args }
 function dcr  { docker compose restart @args }
 function dcs  { docker compose stop @args }
+function dce  { docker compose exec @args }
+function dcps { docker compose ps @args }
+function dcpl { docker compose pull @args }
 
 # --- MANAGEMENT ---
 function dst { docker start @args }
