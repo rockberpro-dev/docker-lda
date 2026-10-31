@@ -1,9 +1,9 @@
 # ==============================================================================
 # LDA — Logical Docker Aliases
-# https://github.com/rockberpro/docker-lda
+# https://github.com/rockberpro-dev/docker-lda
 #
 # Install:
-#   iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.ps1 | iex
+#   iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/setup.ps1 | iex
 #
 # Manual install:
 #   Add `. "$HOME\.config\docker-lda\docker-lda.ps1"` to your $PROFILE

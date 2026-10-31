@@ -19,14 +19,14 @@ fi
 
 mkdir -p "$CONFIG_DIR"
 
-curl -sL "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.sh" -o "$INSTALL_PATH"
+curl -sL "https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda.sh" -o "$INSTALL_PATH"
 
 if ! grep -qF "source \"$INSTALL_PATH\"" "$BASHRC" 2>/dev/null; then
     echo "" >> "$BASHRC"
     echo "source \"$INSTALL_PATH\"" >> "$BASHRC"
 fi
 
-curl -sL "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.sh" -o "$HELP_PATH"
+curl -sL "https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda-help.sh" -o "$HELP_PATH"
 chmod +x "$HELP_PATH"
 
 echo "docker-lda installed: $INSTALL_PATH"
