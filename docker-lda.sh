@@ -1,9 +1,9 @@
 # ==============================================================================
 # LDA — Logical Docker Aliases
-# https://github.com/rockberpro/docker-lda
+# https://github.com/rockberpro-dev/docker-lda
 #
 # Install:
-#   curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.sh | bash
+#   curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/setup.sh | bash
 #
 # Manual install:
 #   echo 'source ~/.config/docker-lda/docker-lda.sh' >> ~/.bashrc && source ~/.bashrc

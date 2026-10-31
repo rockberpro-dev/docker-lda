@@ -1,6 +1,6 @@
 # ==============================================================================
 # LDA Help — Logical Docker Aliases
-# https://github.com/rockberpro/docker-lda
+# https://github.com/rockberpro-dev/docker-lda
 # ==============================================================================
 
 $ldaFile = if ($env:DOCKER_LDA_FILE) { $env:DOCKER_LDA_FILE } else { "$PSScriptRoot\docker-lda.ps1" }

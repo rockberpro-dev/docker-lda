@@ -6,6 +6,56 @@
 
 <p align="center">A curated set of short, memorable Docker aliases organized by category.</p>
 
+## Install
+
+**Linux / macOS / WSL:**
+
+```bash
+curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/setup.sh | bash
+```
+
+**Windows (PowerShell):**
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/setup.ps1 | iex
+```
+
+Then reload your shell (`source ~/.bashrc` on Bash, `. $PROFILE` on PowerShell).
+
+The setup scripts add a single source line to your shell profile and copy two files to `~/.config/docker-lda/` (or `$XDG_CONFIG_HOME/docker-lda/`). Re-running them upgrades an older install that put the files directly in `~/`: the old files and source line are removed. You can read the full source ([setup.sh](setup.sh), [setup.ps1](setup.ps1)) before running, or use the manual install below.
+
+**Manual install (Bash):**
+
+```bash
+mkdir -p ~/.config/docker-lda
+
+curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda.sh \
+  -o ~/.config/docker-lda/docker-lda.sh
+
+curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda-help.sh \
+  -o ~/.config/docker-lda/docker-lda-help.sh && chmod +x ~/.config/docker-lda/docker-lda-help.sh
+
+echo 'source ~/.config/docker-lda/docker-lda.sh' >> ~/.bashrc
+source ~/.bashrc
+```
+
+**Manual install (PowerShell):**
+
+```powershell
+New-Item -ItemType Directory -Path "$HOME\.config\docker-lda" -Force | Out-Null
+
+iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda.ps1 `
+  -OutFile "$HOME\.config\docker-lda\docker-lda.ps1"
+
+iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda-help.ps1 `
+  -OutFile "$HOME\.config\docker-lda\docker-lda-help.ps1"
+
+Add-Content -Path $PROFILE -Value "`n. `"$HOME\.config\docker-lda\docker-lda.ps1`""
+. $PROFILE
+```
+
+## How It Reads
+
 Two-letter **prefix** picks the command. One-letter **suffix** is the first letter of the subcommand or flag.
 
 ```
@@ -49,54 +99,6 @@ Run `lda` to see every alias right in your terminal:
 ║         ...                                     ║
 ╚═════════════════════════════════════════════════╝
   37 aliases across 8 groups
-```
-
-## Install
-
-**Linux / macOS / WSL:**
-
-```bash
-curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.sh | bash
-```
-
-**Windows (PowerShell):**
-
-```powershell
-iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/setup.ps1 | iex
-```
-
-Then reload your shell (`source ~/.bashrc` on Bash, `. $PROFILE` on PowerShell).
-
-The setup scripts add a single source line to your shell profile and copy two files to `~/.config/docker-lda/` (or `$XDG_CONFIG_HOME/docker-lda/`). Re-running them upgrades an older install that put the files directly in `~/`: the old files and source line are removed. You can read the full source ([setup.sh](setup.sh), [setup.ps1](setup.ps1)) before running, or use the manual install below.
-
-**Manual install (Bash):**
-
-```bash
-mkdir -p ~/.config/docker-lda
-
-curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.sh \
-  -o ~/.config/docker-lda/docker-lda.sh
-
-curl -sL https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.sh \
-  -o ~/.config/docker-lda/docker-lda-help.sh && chmod +x ~/.config/docker-lda/docker-lda-help.sh
-
-echo 'source ~/.config/docker-lda/docker-lda.sh' >> ~/.bashrc
-source ~/.bashrc
-```
-
-**Manual install (PowerShell):**
-
-```powershell
-New-Item -ItemType Directory -Path "$HOME\.config\docker-lda" -Force | Out-Null
-
-iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.ps1 `
-  -OutFile "$HOME\.config\docker-lda\docker-lda.ps1"
-
-iwr -useb https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.ps1 `
-  -OutFile "$HOME\.config\docker-lda\docker-lda-help.ps1"
-
-Add-Content -Path $PROFILE -Value "`n. `"$HOME\.config\docker-lda\docker-lda.ps1`""
-. $PROFILE
 ```
 
 ## Alias Reference

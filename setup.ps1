@@ -14,8 +14,8 @@ if ((Test-Path $PROFILE) -and (Select-String -Path $PROFILE -SimpleMatch '\.dock
 
 New-Item -ItemType Directory -Path $configDir -Force | Out-Null
 
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda.ps1" -UseBasicParsing -OutFile $installPath
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rockberpro/docker-lda/main/docker-lda-help.ps1" -UseBasicParsing -OutFile $helpPath
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda.ps1" -UseBasicParsing -OutFile $installPath
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda-help.ps1" -UseBasicParsing -OutFile $helpPath
 
 $profileDir = Split-Path $PROFILE
 if (-not (Test-Path $profileDir)) {
