@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Added
+
+- Build and registry aliases: `dbl` (`docker build`), `dpu` (`docker push`), `dtg` (`docker tag`)
+- `drmf` (`docker rm -f`) and `dvpr` (`docker volume prune`)
+- Network group: `dn`, `dnls`, `dnrm`, `dnpr`
+- Compose aliases `dce` (`exec`), `dcps` (`ps`) and `dcpl` (`pull`). `dcps` was the old `compose stop` alias before the `dc` prefix change
+
 ### Changed
 
 - Files now install to `~/.config/docker-lda/` (or `$XDG_CONFIG_HOME/docker-lda/`) instead of directly in `~/`. Re-running the setup script migrates an older install: it removes `~/.docker-lda.sh`, `~/.docker-lda-help.sh` (`.ps1` on Windows) and the old source line in `~/.bashrc`/`$PROFILE`
