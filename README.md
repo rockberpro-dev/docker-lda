@@ -6,6 +6,10 @@
 
 <p align="center">A curated set of short, memorable Docker aliases organized by category.</p>
 
+<p align="center">
+  <img src="resources/img/demo.svg" alt="docker-lda demo" width="700">
+</p>
+
 ## Install
 
 **Linux / macOS / WSL:**

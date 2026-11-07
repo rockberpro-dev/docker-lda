@@ -1,0 +1,11 @@
+# Run a container with a short alias
+drn -d --name web -p 8080:80 nginx
+dps
+dlg web
+# Stop and remove it
+dsp web
+drm web
+# Everything at a glance
+dils
+lda | head -12
+clear
