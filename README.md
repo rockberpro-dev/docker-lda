@@ -15,13 +15,13 @@
 **Linux / macOS / WSL:**
 
 ```bash
-curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/setup.sh | bash
+curl -sL https://raw.githubusercontent.com/rockberpro-labs/docker-lda/main/setup.sh | bash
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/setup.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/rockberpro-labs/docker-lda/main/setup.ps1 | iex
 ```
 
 Then reload your shell (`source ~/.bashrc` on Bash, `. $PROFILE` on PowerShell).

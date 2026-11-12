@@ -20,10 +20,10 @@ Read the source before you run it: [setup.sh](setup.sh), [setup.ps1](setup.ps1).
 ```bash
 mkdir -p ~/.config/docker-lda
 
-curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda.sh \
+curl -sL https://raw.githubusercontent.com/rockberpro-labs/docker-lda/main/docker-lda.sh \
   -o ~/.config/docker-lda/docker-lda.sh
 
-curl -sL https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda-help.sh \
+curl -sL https://raw.githubusercontent.com/rockberpro-labs/docker-lda/main/docker-lda-help.sh \
   -o ~/.config/docker-lda/docker-lda-help.sh && chmod +x ~/.config/docker-lda/docker-lda-help.sh
 
 echo 'source ~/.config/docker-lda/docker-lda.sh' >> ~/.bashrc
@@ -35,10 +35,10 @@ source ~/.bashrc
 ```powershell
 New-Item -ItemType Directory -Path "$HOME\.config\docker-lda" -Force | Out-Null
 
-iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda.ps1 `
+iwr -useb https://raw.githubusercontent.com/rockberpro-labs/docker-lda/main/docker-lda.ps1 `
   -OutFile "$HOME\.config\docker-lda\docker-lda.ps1"
 
-iwr -useb https://raw.githubusercontent.com/rockberpro-dev/docker-lda/main/docker-lda-help.ps1 `
+iwr -useb https://raw.githubusercontent.com/rockberpro-labs/docker-lda/main/docker-lda-help.ps1 `
   -OutFile "$HOME\.config\docker-lda\docker-lda-help.ps1"
 
 Add-Content -Path $PROFILE -Value "`n. `"$HOME\.config\docker-lda\docker-lda.ps1`""
